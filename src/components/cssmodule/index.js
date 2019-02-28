@@ -6,10 +6,19 @@
  */
 import React, { Component } from 'react';
 import { Col, Card, Row } from 'antd';
+import { getAdminMock } from '../../axios';
+
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import styles from './index.module.less';
 
 class Cssmodule extends Component {
+
+    componentWillMount () {
+        getAdminMock().then(res => {
+            console.log(res)
+        });
+    }
+
     render() {
         return (
             <div>
