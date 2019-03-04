@@ -24,7 +24,7 @@ class App extends Component {
         // fetchData({funcName: 'admin', stateName: 'auth'});
         this.getClientWidth();
         window.onresize = () => {
-            console.log('屏幕变化了');
+            // console.log('屏幕变化了');
             this.getClientWidth();
         }
     }
@@ -53,7 +53,7 @@ class App extends Component {
     getClientWidth = () => { // 获取当前浏览器宽度并设置responsive管理响应式
         const { receiveData } = this.props;
         const clientWidth = window.innerWidth;
-        console.log(clientWidth);
+        // console.log(clientWidth);
         receiveData({isMobile: clientWidth <= 992}, 'responsive');
     };
     toggle = () => {

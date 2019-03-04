@@ -60,7 +60,7 @@ export default {
             ],
         },
         {
-            key: '/app/cssModule', title: 'cssModule', icon: 'star', component: 'Cssmodule'
+            key: '/app/vedioPlay', title: 'vedioPlay', icon: 'star', component: 'VedioPlay'
         },
         {
             key: '/app/extension', title: '功能扩展', icon: 'bars',

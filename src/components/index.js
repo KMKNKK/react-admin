@@ -24,7 +24,7 @@ import BasicAnimations from './animation/BasicAnimations';
 import ExampleAnimations from './animation/ExampleAnimations';
 import AuthBasic from './auth/Basic';
 import RouterEnter from './auth/RouterEnter';
-import Cssmodule from './cssmodule';
+import VedioPlay from './vedioplay'
 import MapUi from './ui/map';
 import QueryParams from './extension/QueryParams';
 
@@ -38,5 +38,5 @@ export default {
     Echarts, Recharts, Icons, Buttons, Spins, Modals, Notifications,
     Tabs, Banners, Drags, Dashboard, Gallery, BasicAnimations,
     ExampleAnimations, AuthBasic, RouterEnter, WysiwygBundle,
-    Cssmodule, MapUi, QueryParams
+    VedioPlay, MapUi, QueryParams
 }
