@@ -9,30 +9,23 @@ import { Player, ControlBar, ReplayControl,
     ForwardControl, CurrentTimeDisplay,
     TimeDivider, PlaybackRateMenuButton, VolumeMenuButton } from 'video-react';
 
-import { getAdminMock } from '../../axios';
+import { Layout, Sider, Content } from 'antd';
 
-import BreadcrumbCustom from '../BreadcrumbCustom';
 import '../../../node_modules/video-react/dist/video-react.css'; // import css'
-import vedio from './vedio.mp4'
-import post from './post.png'
+
+import UploadVideo from '../forms/UploadVideo'
 
 class VedioPlay extends Component {
-
-    componentWillMount () {
-        getAdminMock('findVedio').then(res => {
-            console.log(res)
-        });
-    }
 
     render() {
         return (
             <div>
-                <BreadcrumbCustom first="cssModule" />
                 <Player
                     playsInline
-                    poster={post}
-                    src={vedio}
+                    // poster={post}
+                    src={'http://localhost:7001/public/ball.mp4'}
                 />
+                <UploadVideo />
             </div>
         )
     }
