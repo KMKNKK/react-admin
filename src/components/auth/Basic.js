@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { Row, Col, Card } from 'antd';
 import BreadcrumbCustom from '@/components/BreadcrumbCustom';
 import AuthWidget from '@/components/widget/AuthWidget';
-import beauty from '@/style/imgs/beauty.jpg';
 
 class Basic extends Component {
     render() {
@@ -17,7 +16,7 @@ class Basic extends Component {
                         <Row>
                             <Col span={24}>
                                 <Card bordered={false} bodyStyle={{minHeight: 600}}>
-                                    {!auth.uid && <h2 style={{height: 500}} className="center">权限分级开发中</h2>}
+                                    {!auth.uid ? <h2 style={{height: 500}} className="center">你现在是访客身份</h2> : <h2 style={{height: 500}} className="center">你现在是管理员身份</h2>}
                                     {/* {
                                         auth.permissions && auth.permissions.includes('auth/authPage/visit') &&
                                         <div style={{textAlign: 'center'}}>

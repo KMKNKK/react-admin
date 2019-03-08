@@ -7,16 +7,19 @@ class UploadVideo extends Component {
     render() {
         const Dragger = Upload.Dragger;
         let videoCategory = 'video/sports';
+        let refreshView = this.props.refreshView;
 
         const props = {
             name: 'file',
-            action: `//localhost:7001/uploadVideo?videoCategory=${videoCategory}`,
+            action: `//47.94.86.217/uploadVideo?videoCategory=${videoCategory}`,
+            // action: `//localhost:7001/uploadVideo?videoCategory=${videoCategory}`,
             onChange(info) {
                 if (info.file.status !== 'uploading') {
                     console.log(info.file, info.fileList);
                 }
                 if (info.file.status === 'done') {
                     message.success(`${info.file.name} file uploaded successfully`);
+                    refreshView();
                 } else if (info.file.status === 'error') {
                     message.error(`${info.file.name} file upload failed.`);
                 }

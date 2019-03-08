@@ -43,7 +43,7 @@ class Login extends React.Component {
             <div className="login">
                 <div className="login-form" >
                     <div className="login-logo">
-                        <span>React Admin</span>
+                        <span>短视频后台管理系统</span>
                         <PwaInstaller />
                     </div>
                     <Form onSubmit={this.handleSubmit} style={{maxWidth: '300px'}}>
@@ -72,10 +72,10 @@ class Login extends React.Component {
                             <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
                                 登录
                             </Button>
-                            <p style={{display: 'flex', justifyContent: 'space-between'}}>
+                            {/* <p style={{display: 'flex', justifyContent: 'space-between'}}>
                                 <span >或 现在就去注册!</span>
                                 <span onClick={this.gitHub} ><Icon type="github" />(第三方登录)</span>
-                            </p>
+                            </p> */}
                         </FormItem>
                     </Form>
                 </div>
