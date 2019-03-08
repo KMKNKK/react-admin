@@ -17,8 +17,8 @@ class Basic extends Component {
                         <Row>
                             <Col span={24}>
                                 <Card bordered={false} bodyStyle={{minHeight: 600}}>
-                                    {!auth.uid && <h2 style={{height: 500}} className="center">登录之后你将看到一张美女图</h2>}
-                                    {
+                                    {!auth.uid && <h2 style={{height: 500}} className="center">权限分级开发中</h2>}
+                                    {/* {
                                         auth.permissions && auth.permissions.includes('auth/authPage/visit') &&
                                         <div style={{textAlign: 'center'}}>
                                             <img src={beauty} alt="" style={{height: 400}} />
@@ -33,7 +33,7 @@ class Basic extends Component {
                                             }
                                         </div>
 
-                                    }
+                                    } */}
                                 </Card>
                             </Col>
                         </Row>

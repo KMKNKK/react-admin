@@ -6,14 +6,14 @@ import ReactEcharts from 'echarts-for-react';
 
 let xAxisData = [];
 let data = [];
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 60; i++) {
     xAxisData.push(i);
-    data.push(Math.ceil((Math.cos(i / 5) * (i / 5) + i / 6) * 5) + 10);
+    data.push(Math.ceil((Math.cos(i / 5) * (i / 5) + i / 6) * 5) + 5);
 }
 
 const option = {
     title: {
-        text: '最近50天每天项目完成情况',
+        text: '最近一小时服务器容量监控',
         left: 'center',
         textStyle: {
             color: '#ccc',
@@ -85,7 +85,7 @@ const option = {
             }
         }
     }, {
-        name: '完成项目数',
+        name: '服务器负载',
         type: 'bar',
         data: data,
         xAxisIndex: 1,

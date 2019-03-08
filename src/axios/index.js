@@ -40,4 +40,4 @@ const newAxios = axios.create({
     withCredentials:true,
 });
 
-export const getAdminMock = (videoName) => newAxios.get('/getVideo?videoName=' + videoName)
+export const getVideoList = (dirPath) => newAxios.post('/getVideoList?dirPath=' + dirPath)

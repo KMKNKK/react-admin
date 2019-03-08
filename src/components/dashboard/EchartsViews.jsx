@@ -7,7 +7,7 @@ import echarts from 'echarts';
 
 const option = {
     title: {
-        text: '最近7天用户访问量',
+        text: '最近7天访问统计',
         left: '50%',
         show: false,
         textAlign: 'center'
@@ -79,7 +79,7 @@ const option = {
         }
     },
     series: [{
-        name: '昨日',
+        name: '视频被访次数',
         type: 'line',
         smooth: true,
         showSymbol: false,
@@ -100,6 +100,36 @@ const option = {
         itemStyle: {
             normal: {
                 color: '#58c8da'
+            }
+        },
+        lineStyle: {
+            normal: {
+                width: 3
+            }
+        }
+    },
+    {
+        name: '访问用户量',
+        type: 'line',
+        smooth: true,
+        showSymbol: false,
+        symbol: 'circle',
+        symbolSize: 6,
+        data: ['220', '240', '160', '161', '122', '88', '260'],
+        areaStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgba(216, 244, 247,1)'
+                }, {
+                    offset: 1,
+                    color: 'rgba(216, 244, 247,1)'
+                }], false)
+            }
+        },
+        itemStyle: {
+            normal: {
+                color: '#2E8B57'
             }
         },
         lineStyle: {

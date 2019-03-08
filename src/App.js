@@ -28,28 +28,28 @@ class App extends Component {
             this.getClientWidth();
         }
     }
-    componentDidMount() {
-        const openNotification = () => {
-            notification.open({
-              message: '博主-yezihaohao',
-              description: (
-                  <div>
-                      <p>
-                          GitHub地址： <a href="https://github.com/yezihaohao" target="_blank" rel="noopener noreferrer">https://github.com/yezihaohao</a>
-                      </p>
-                      <p>
-                          博客地址： <a href="https://yezihaohao.github.io/" target="_blank" rel="noopener noreferrer">https://yezihaohao.github.io/</a>
-                      </p>
-                  </div>
-              ),
-              icon: <Icon type="smile-circle" style={{ color: 'red' }} />,
-              duration: 0,
-            });
-            localStorage.setItem('isFirst', JSON.stringify(true));
-        };
-        const isFirst = JSON.parse(localStorage.getItem('isFirst'));
-        !isFirst && openNotification();
-    }
+    // componentDidMount() {
+    //     const openNotification = () => {
+    //         notification.open({
+    //           message: '博主-yezihaohao',
+    //           description: (
+    //               <div>
+    //                   <p>
+    //                       GitHub地址： <a href="https://github.com/yezihaohao" target="_blank" rel="noopener noreferrer">https://github.com/yezihaohao</a>
+    //                   </p>
+    //                   <p>
+    //                       博客地址： <a href="https://yezihaohao.github.io/" target="_blank" rel="noopener noreferrer">https://yezihaohao.github.io/</a>
+    //                   </p>
+    //               </div>
+    //           ),
+    //           icon: <Icon type="smile-circle" style={{ color: 'red' }} />,
+    //           duration: 0,
+    //         });
+    //         localStorage.setItem('isFirst', JSON.stringify(true));
+    //     };
+    //     const isFirst = JSON.parse(localStorage.getItem('isFirst'));
+    //     !isFirst && openNotification();
+    // }
     getClientWidth = () => { // 获取当前浏览器宽度并设置responsive管理响应式
         const { receiveData } = this.props;
         const clientWidth = window.innerWidth;
@@ -79,7 +79,7 @@ class App extends Component {
                             <Routes auth={auth} onRouterChange={this._setTitle} />
                         </Content>
                         <Footer style={{ textAlign: 'center' }}>
-                        React-Admin ©{new Date().getFullYear()} Created by 865470087@qq.com
+                        Video-Admin ©{new Date().getFullYear()} 短视频后台管理平台
                         </Footer>
                     </Layout>
                 </Layout>

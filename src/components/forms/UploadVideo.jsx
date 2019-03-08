@@ -6,10 +6,11 @@ class UploadVideo extends Component {
 
     render() {
         const Dragger = Upload.Dragger;
+        let videoCategory = 'video/sports';
 
         const props = {
             name: 'file',
-            action: '//localhost:7001/posts',
+            action: `//localhost:7001/uploadVideo?videoCategory=${videoCategory}`,
             onChange(info) {
                 if (info.file.status !== 'uploading') {
                     console.log(info.file, info.fileList);
@@ -27,8 +28,8 @@ class UploadVideo extends Component {
                 <p className="ant-upload-drag-icon">
                     <Icon type="inbox" />
                 </p>
-                <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                <p className="ant-upload-hint">Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files</p>
+                <p className="ant-upload-text">Click or drag file to this area to upload video</p>
+                <p className="ant-upload-hint">点击或将视频拖拽到此处来上传</p>
             </Dragger>
         )
     }
