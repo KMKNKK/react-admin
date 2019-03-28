@@ -34,7 +34,7 @@ class VideoPlay extends Component {
         })
     }
 
-    deleteVideo() {
+    handleDeleteVideo() {
         const videoName = this.state.deleteVideoName;
         console.log('videoName', videoName)
         deleteVideo(videoName).then(res => console.log('删除返回的res', res))
@@ -55,7 +55,7 @@ class VideoPlay extends Component {
     
     handleOk = (e) => {
         console.log(e);
-        this.deleteVideo();
+        this.handleDeleteVideo();
         this.setState({
             deleteVideoName: '',
             visible: false,
