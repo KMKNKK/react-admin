@@ -89,26 +89,31 @@ class Dashboard extends React.Component {
                                 </div>
                                 <span className="card-tool"><Icon type="sync" /></span>
                                 <Timeline>
-                                    <Timeline.Item color="green">开发计划完成</Timeline.Item>
-                                    <Timeline.Item color="green">使用Egg.js开发出后台功能初版(包括视频播放、上传、删除等)</Timeline.Item>
-                                    <Timeline.Item color="green">使用React开发出前端功能初版(包括视频播放、上传、删除、登录、数据可视化等)</Timeline.Item>
-                                    <Timeline.Item color="#108ee9">
-                                        <p>近期在开发的后台开发中的项目</p>
-                                        <p>视频流处理：包括视频加水印、视频加字幕等简易流操作。预计使用FFmpeg完成，已查阅相关文档和文献</p>
-                                        <p>用户登录、权限分级：使用MySQL记录用户账户信息，进行权限分级</p>
-                                        <p>内容审核：对视频内容进行审核、分类</p>
+                                    <Timeline.Item color="green">完成开发设计</Timeline.Item>
+                                    <Timeline.Item color="green">
+                                        <p>目前已完成的后台功能：</p>
+                                        <p>1.提供视频播放、上传、删除的API</p>
+                                        <p>2.提供视频流处理的API：包括视频帧率调整、视频压缩、改变视频长宽比</p>
+                                        <p>3.用户登录、权限分级：使用MySQL记录用户账户信息，进行权限分级</p>
+                                        <p>4.用户访问、观看视频次数统计</p>
+                                        <p>5.视频检索API</p>
+                                    </Timeline.Item>
+                                    <Timeline.Item color="green">
+                                        <p>目前已完成的前端功能：</p>
+                                        <p>1.提供视频播放、上传、删除界面</p>
+                                        <p>2.视频流处理：提供视频流处理的相关界面</p>
                                     </Timeline.Item>
                                     <Timeline.Item color="#108ee9">
-                                        <p>近期在开发的前端开发中的项目</p>
-                                        <p>完善现有界面</p>
-                                        <p>视频流处理：开发出配套后端功能的界面</p>
-                                        <p>内容审核：开发出配套后端功能的界面</p>
+                                        <p>近期在开发的后台API</p>                                       
+                                        <p>1.内容审核：对视频内容进行审核、分类</p>
+                                        <p>2.服务器容量监测</p>
+                                        <p>3.消息推送机制</p>
                                     </Timeline.Item>
-
-                                    <Timeline.Item color="red">
-                                        <p>尚未规划好的功能，正在查阅相关资料</p>
-                                        <p>服务器容量监测</p>
-                                        <p>消息推送机制</p>
+                                    <Timeline.Item color="#108ee9">
+                                        <p>近期在开发的前端功能</p>
+                                        <p>1.内容审核：开发出配套后端功能的界面</p>
+                                        <p>2.消息推送机制</p>
+                                        <p>视频检索界面</p>
                                     </Timeline.Item>
                                 </Timeline>
                             </Card>
