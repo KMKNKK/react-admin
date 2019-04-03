@@ -113,7 +113,7 @@ class Dashboard extends React.Component {
                                         <p>近期在开发的前端功能</p>
                                         <p>1.内容审核：开发出配套后端功能的界面</p>
                                         <p>2.消息推送机制</p>
-                                        <p>视频检索界面</p>
+                                        <p>3.视频检索界面</p>
                                     </Timeline.Item>
                                 </Timeline>
                             </Card>
