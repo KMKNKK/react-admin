@@ -32,8 +32,8 @@ export const admin = () => get({ url: config.MOCK_AUTH_ADMIN });
 export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
 
 const newAxios = axios.create({
-    baseURL: '//47.94.86.217',
-    // baseURL: 'http://localhost:7001',
+    // baseURL: '//47.94.86.217',
+    baseURL: 'http://localhost:7001',
     timeout: 1000,
     // headers: {
     //     'Content-Type':'application/x-www-form-urlencoded',
@@ -41,6 +41,8 @@ const newAxios = axios.create({
     // withCredentials:true,
 });
 
-export const getVideoList = (dirPath) => newAxios.post('/getVideoList?dirPath=' + dirPath)
+export const getVideoList = (dirPath) => newAxios.get('/getVideoList?dirPath=' + dirPath)
+
+export const getVideoOccupancy = () => newAxios.get('/getVideoList/videoOccupancy')
 
 export const deleteVideo = (fileName) => newAxios.post('/deleteVideo?fileType=video/sports&fileName=' + fileName)

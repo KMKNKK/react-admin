@@ -71,10 +71,22 @@ class Dashboard extends React.Component {
                             </Card>
                         </div>
                     </Col>
-                    <Col className="gutter-row" md={16}>
+                    <Col className="gutter-row" md={8}>
                         <div className="gutter-box">
-                            <Card bordered={false} className={'no-padding'}>
+                            <Card bordered={false} style={{'padding-top': '90px'}}>
                                 <EchartsProjects />
+                            </Card>
+                        </div>
+                    </Col>
+                    <Col className="gutter-row" md={8}>
+                        <div className="gutter-box">
+                            <Card bordered={false}>
+                                <div className="pb-m">
+                                    <h3>访问量统计</h3>
+                                    <small>最近7天用户访问量</small>
+                                </div>
+                                <span className="card-tool"><Icon type="sync" /></span>
+                                <EchartsViews />
                             </Card>
                         </div>
                     </Col>
@@ -137,18 +149,6 @@ class Dashboard extends React.Component {
                                         </div>
                                     </li>
                                 </ul>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col className="gutter-row" md={8}>
-                        <div className="gutter-box">
-                            <Card bordered={false}>
-                                <div className="pb-m">
-                                    <h3>访问量统计</h3>
-                                    <small>最近7天用户访问量</small>
-                                </div>
-                                <span className="card-tool"><Icon type="sync" /></span>
-                                <EchartsViews />
                             </Card>
                         </div>
                     </Col>

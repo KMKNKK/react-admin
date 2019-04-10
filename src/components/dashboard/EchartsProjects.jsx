@@ -1,116 +1,72 @@
 /**
  * Created by hao.cheng on 2017/5/5.
  */
-import React from 'react';
-import ReactEcharts from 'echarts-for-react';
+import React, { Component } from 'react';
+import { getVideoOccupancy } from '../../axios'
+const echarts = require('echarts');
 
-let xAxisData = [];
-let data = [];
-for (let i = 0; i < 60; i++) {
-    xAxisData.push(i);
-    data.push(Math.ceil((Math.cos(i / 5) * (i / 5) + i / 6) * 5) + 5);
-}
+class EchartsProjects extends Component {
+    componentDidMount() {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
 
-const option = {
-    title: {
-        text: '最近一小时服务器容量监控',
-        left: 'center',
-        textStyle: {
-            color: '#ccc',
-            fontSize: 10
-        }
-    },
-    backgroundColor: '#08263a',
-    xAxis: [{
-        show: true,
-        data: xAxisData,
-        axisLabel: {
-            textStyle: {
-                color: '#ccc'
+        // 绘制图表
+        myChart.setOption({
+            tooltip : {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            toolbox: {
+                feature: {
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+            series: [
+                {
+                    name: '已使用容量',
+                    type: 'gauge',
+                    detail: {formatter:'{value}%'},
+                    data: [{value: 50}]
+                }
+            ]
+        });
+
+        setInterval(function () {
+            let option = {
+                tooltip : {
+                    formatter: "{a} <br/>{b} : {c}%"
+                },
+                title: {
+                    left: 'center',
+                    text: '服务器已使用容量比例',
+                },
+                toolbox: {
+                    feature: {
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                series: [
+                    {
+                        name: '已使用容量',
+                        type: 'gauge',
+                        detail: {formatter:'{value}%'},
+                        data: [{value: 50}]
+                    }
+                ]
             }
-        }
-    }, {
-        show: false,
-        data: xAxisData
-    }],
-    tooltip: {},
-    visualMap: {
-        show: false,
-        min: 0,
-        max: 50,
-        dimension: 0,
-        inRange: {
-            color: ['#4a657a', '#308e92', '#b1cfa5', '#f5d69f', '#f5898b', '#ef5055']
-        }
-    },
-    yAxis: {
-        axisLine: {
-            show: false
-        },
-        axisLabel: {
-            textStyle: {
-                color: '#ccc'
-            }
-        },
-        splitLine: {
-            show: true,
-            lineStyle: {
-                color: '#08263f'
-            }
-        },
-        axisTick: {
-            show: false
-        }
-    },
-    series: [
-        {
-        name: 'Simulate Shadow',
-        type: 'line',
-        data: data,
-        z: 2,
-        showSymbol: false,
-        animationDelay: 0,
-        animationEasing: 'linear',
-        animationDuration: 1200,
-        lineStyle: {
-            normal: {
-                color: 'transparent'
-            }
-        },
-        areaStyle: {
-            normal: {
-                color: '#08263a',
-                shadowBlur: 50,
-                shadowColor: '#000'
-            }
-        }
-    }, {
-        name: '服务器负载',
-        type: 'bar',
-        data: data,
-        xAxisIndex: 1,
-        z: 3,
-        itemStyle: {
-            normal: {
-                barBorderRadius: 5
-            }
-        }
-    }],
-    animationEasing: 'elasticOut',
-    animationEasingUpdate: 'elasticOut',
-    animationDelay: function (idx) {
-        return idx * 20;
-    },
-    animationDelayUpdate: function (idx) {
-        return idx * 20;
+            getVideoOccupancy().then(res => {
+                option.series[0].data[0].value = res.data.msg;
+                myChart.setOption(option, true);
+            })
+
+        },1000);
     }
-};
-const EchartsProjects = () => (
-    <ReactEcharts
-        option={option}
-        style={{height: '212px', width: '100%'}}
-        className={'react_for_echarts'}
-    />
-);
+    render() {
+        return (
+            <div id="main" style={{ width: 377, height: 352 }}></div>
+        );
+    }
+}
 
 export default EchartsProjects;
