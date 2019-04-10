@@ -45,4 +45,6 @@ export const getVideoList = (dirPath) => newAxios.get('/getVideoList?dirPath=' +
 
 export const getVideoOccupancy = () => newAxios.get('/getVideoList/videoOccupancy')
 
+export const getPV = () => newAxios.get('/getVideoList/getPV')
+
 export const deleteVideo = (fileName) => newAxios.post('/deleteVideo?fileType=video/sports&fileName=' + fileName)

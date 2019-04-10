@@ -81,11 +81,6 @@ class Dashboard extends React.Component {
                     <Col className="gutter-row" md={8}>
                         <div className="gutter-box">
                             <Card bordered={false}>
-                                <div className="pb-m">
-                                    <h3>访问量统计</h3>
-                                    <small>最近7天用户访问量</small>
-                                </div>
-                                <span className="card-tool"><Icon type="sync" /></span>
                                 <EchartsViews />
                             </Card>
                         </div>

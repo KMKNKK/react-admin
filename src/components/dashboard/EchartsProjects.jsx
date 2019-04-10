@@ -1,19 +1,17 @@
-/**
- * Created by hao.cheng on 2017/5/5.
- */
 import React, { Component } from 'react';
 import { getVideoOccupancy } from '../../axios'
 const echarts = require('echarts');
 
 class EchartsProjects extends Component {
-    componentDidMount() {
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
 
-        // 绘制图表
-        myChart.setOption({
+    drawE(myChart) {
+        let option = {
             tooltip : {
                 formatter: "{a} <br/>{b} : {c}%"
+            },
+            title: {
+                left: 'center',
+                text: '服务器已使用容量比例',
             },
             toolbox: {
                 feature: {
@@ -29,38 +27,24 @@ class EchartsProjects extends Component {
                     data: [{value: 50}]
                 }
             ]
-        });
+        }
+        getVideoOccupancy().then(res => {
+            option.series[0].data[0].value = res.data.msg;
+            myChart.setOption(option, true);
+        })
+    }
 
-        setInterval(function () {
-            let option = {
-                tooltip : {
-                    formatter: "{a} <br/>{b} : {c}%"
-                },
-                title: {
-                    left: 'center',
-                    text: '服务器已使用容量比例',
-                },
-                toolbox: {
-                    feature: {
-                        restore: {},
-                        saveAsImage: {}
-                    }
-                },
-                series: [
-                    {
-                        name: '已使用容量',
-                        type: 'gauge',
-                        detail: {formatter:'{value}%'},
-                        data: [{value: 50}]
-                    }
-                ]
-            }
-            getVideoOccupancy().then(res => {
-                option.series[0].data[0].value = res.data.msg;
-                myChart.setOption(option, true);
-            })
+    componentDidMount() {
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
 
-        },1000);
+        // 绘制图表
+        this.drawE(myChart);
+
+        // 更新数据
+        setInterval(() => {
+            this.drawE(myChart);
+        }, 10000);
     }
     render() {
         return (
