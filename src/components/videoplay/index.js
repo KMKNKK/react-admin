@@ -54,7 +54,7 @@ class VideoPlay extends Component {
     }
     
     handleOk = (e) => {
-        console.log(e);
+        console.log('handleOk', e);
         this.handleDeleteVideo();
         this.setState({
             deleteVideoName: '',
@@ -63,7 +63,7 @@ class VideoPlay extends Component {
     }
     
     handleCancel = (e) => {
-        console.log(e);
+        console.log('handleCancel', e);
         this.setState({
           deleteVideoName: '',
           visible: false,
@@ -81,14 +81,12 @@ class VideoPlay extends Component {
 
     renderVideo(videoList) {
         const result = videoList.map((val, idx) =>
-            <div>
+            <div className="video-item">
                 <Player
                     fluid={false}
                     height={300}
                     playsInline
-                    src={`//47.94.86.217/sports/${val}`}
-                    // process.env.NODE_ENV === 'production'
-                    // src={`http://localhost:7001/public/video/sports/${val}`}
+                    src={`//127.0.0.1:7001/public/video/sports/${val}`}
                 />
                 <Button type="danger" name={val} onClick={e => this.showModal(e)} style={{'width': '100%'}}>删除该视频</Button>
             </div>
@@ -111,7 +109,7 @@ class VideoPlay extends Component {
                     {this.renderVideo(videoList)}
                 </div>
                 <Modal
-                    title="请二次确认"
+                    title="请二次确认"  
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}

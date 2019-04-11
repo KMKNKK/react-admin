@@ -1,4 +1,11 @@
 .video-list-container {
-    display: flex;
+    overflow: hidden;
     margin-top: 30px;
+    border-radius: 10px;
+}
+
+.video-item {
+    float: left;
+    margin: 10px 55px;
+    box-shadow:2px 2px 5px #333333;
 }

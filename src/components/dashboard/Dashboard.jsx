@@ -15,65 +15,9 @@ class Dashboard extends React.Component {
             <div className="gutter-example button-demo">
                 <BreadcrumbCustom />
                 <Row gutter={10}>
-                    <Col className="gutter-row" md={4}>
-                        <div className="gutter-box">
-                            <Card bordered={false}>
-                                <div className="clear y-center">
-                                    <div className="pull-left mr-m">
-                                        <Icon type="heart" className="text-2x text-danger" />
-                                    </div>
-                                    <div className="clear">
-                                        <div className="text-muted">我的收藏</div>
-                                        <h2>10</h2>
-                                    </div>
-                                </div>
-                            </Card>
-                        </div>
-                        {/* <div className="gutter-box">
-                            <Card bordered={false}>
-                                <div className="clear y-center">
-                                    <div className="pull-left mr-m">
-                                        <Icon type="cloud" className="text-2x" />
-                                    </div>
-                                    <div className="clear">
-                                        <div className="text-muted">云数据</div>
-                                        <h2>30122</h2>
-                                    </div>
-                                </div>
-                            </Card>
-                        </div> */}
-                    </Col>
-                    <Col className="gutter-row" md={4}>
-                        {/* <div className="gutter-box">
-                            <Card bordered={false}>
-                                <div className="clear y-center">
-                                    <div className="pull-left mr-m">
-                                        <Icon type="camera" className="text-2x text-info" />
-                                    </div>
-                                    <div className="clear">
-                                        <div className="text-muted">照片</div>
-                                        <h2>802</h2>
-                                    </div>
-                                </div>
-                            </Card>
-                        </div> */}
-                        <div className="gutter-box">
-                            <Card bordered={false}>
-                                <div className="clear y-center">
-                                    <div className="pull-left mr-m">
-                                        <Icon type="mail" className="text-2x text-success" />
-                                    </div>
-                                    <div className="clear">
-                                        <div className="text-muted">邮件</div>
-                                        <h2>102</h2>
-                                    </div>
-                                </div>
-                            </Card>
-                        </div>
-                    </Col>
                     <Col className="gutter-row" md={8}>
                         <div className="gutter-box">
-                            <Card bordered={false} style={{'padding-top': '90px'}}>
+                            <Card bordered={false}>
                                 <EchartsProjects />
                             </Card>
                         </div>
@@ -82,6 +26,27 @@ class Dashboard extends React.Component {
                         <div className="gutter-box">
                             <Card bordered={false}>
                                 <EchartsViews />
+                            </Card>
+                        </div>
+                    </Col>
+                    <Col className="gutter-row" md={8}>
+                        <div className="gutter-box">
+                            <Card bordered={false}>
+                                <div className="pb-m">
+                                    <h3>消息栏</h3>
+                                </div>
+                                <span className="card-tool"><Icon type="sync" /></span>
+                                <ul className="list-group no-border">
+                                    <li className="list-group-item">
+                                        <span className="pull-left w-40 mr-m">
+                                            <img src={notice} className="img-responsive img-circle" alt="test" />
+                                        </span>
+                                        <div className="clear">
+                                            <span className="block">TODO(开发中)</span>
+                                            <span className="text-muted">用于存放管理者对普通用户的通知消息</span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </Card>
                         </div>
                     </Col>
@@ -126,24 +91,33 @@ class Dashboard extends React.Component {
                             </Card>
                         </div>
                     </Col>
-                    <Col className="gutter-row" md={8}>
+                    <Col className="gutter-row" md={4}>
                         <div className="gutter-box">
                             <Card bordered={false}>
-                                <div className="pb-m">
-                                    <h3>消息栏</h3>
+                                <div className="clear y-center">
+                                    <div className="pull-left mr-m">
+                                        <Icon type="heart" className="text-2x text-danger" />
+                                    </div>
+                                    <div className="clear">
+                                        <div className="text-muted">我的收藏</div>
+                                        <h2>10</h2>
+                                    </div>
                                 </div>
-                                <span className="card-tool"><Icon type="sync" /></span>
-                                <ul className="list-group no-border">
-                                    <li className="list-group-item">
-                                        <span className="pull-left w-40 mr-m">
-                                            <img src={notice} className="img-responsive img-circle" alt="test" />
-                                        </span>
-                                        <div className="clear">
-                                            <span className="block">TODO(开发中)</span>
-                                            <span className="text-muted">用于存放管理者对普通用户的通知消息</span>
-                                        </div>
-                                    </li>
-                                </ul>
+                            </Card>
+                        </div>
+                    </Col>
+                    <Col className="gutter-row" md={4}>
+                        <div className="gutter-box">
+                            <Card bordered={false}>
+                                <div className="clear y-center">
+                                    <div className="pull-left mr-m">
+                                        <Icon type="mail" className="text-2x text-success" />
+                                    </div>
+                                    <div className="clear">
+                                        <div className="text-muted">邮件</div>
+                                        <h2>102</h2>
+                                    </div>
+                                </div>
                             </Card>
                         </div>
                     </Col>

@@ -11,8 +11,8 @@ class UploadVideo extends Component {
 
         const props = {
             name: 'file',
-            action: `//47.94.86.217/uploadVideo?videoCategory=${videoCategory}`,
-            // action: `//localhost:7001/uploadVideo?videoCategory=${videoCategory}`,
+            // action: `//47.94.86.217/uploadVideo?videoCategory=${videoCategory}`,
+            action: `//localhost:7001/uploadVideo?videoCategory=${videoCategory}`,
             onChange(info) {
                 if (info.file.status !== 'uploading') {
                     console.log(info.file, info.fileList);
