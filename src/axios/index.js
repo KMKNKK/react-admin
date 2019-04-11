@@ -48,3 +48,9 @@ export const getVideoOccupancy = () => newAxios.get('/getVideoList/videoOccupanc
 export const getPV = () => newAxios.get('/getVideoList/getPV')
 
 export const deleteVideo = (fileName) => newAxios.post('/deleteVideo?fileType=video/sports&fileName=' + fileName)
+
+export const alterProportion = (fileName, heightWidth, outName) => newAxios.post('/modifyVideo/alterProportion?fileType=video/sports&fileName=' + fileName + '&heightWidth=' + heightWidth + '&outName=' + outName)
+
+export const alterFPS = (fileName, fps, outName) => newAxios.post('/modifyVideo/alterFPS?fileType=video/sports&fileName=' + fileName + '&fps=' + fps + '&outName=' + outName)
+
+export const compressionVideo = (fileName, size, outName) => newAxios.post('/modifyVideo/compressionVideo?fileType=video/sports&fileName=' + fileName + '&size=' + size + '&outName=' + outName)

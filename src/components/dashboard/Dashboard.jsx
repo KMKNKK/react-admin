@@ -42,8 +42,7 @@ class Dashboard extends React.Component {
                                             <img src={notice} className="img-responsive img-circle" alt="test" />
                                         </span>
                                         <div className="clear">
-                                            <span className="block">TODO(开发中)</span>
-                                            <span className="text-muted">用于存放管理者对普通用户的通知消息</span>
+                                            <span className="block">管理公告</span>
                                         </div>
                                     </li>
                                 </ul>
@@ -52,7 +51,7 @@ class Dashboard extends React.Component {
                     </Col>
                 </Row>
                 <Row gutter={10}>
-                    <Col className="gutter-row" md={8}>
+                    {/* <Col className="gutter-row" md={8}>
                         <div className="gutter-box">
                             <Card bordered={false}>
                                 <div className="pb-m">
@@ -90,8 +89,8 @@ class Dashboard extends React.Component {
                                 </Timeline>
                             </Card>
                         </div>
-                    </Col>
-                    <Col className="gutter-row" md={4}>
+                    </Col> */}
+                    {/* <Col className="gutter-row" md={4}>
                         <div className="gutter-box">
                             <Card bordered={false}>
                                 <div className="clear y-center">
@@ -120,7 +119,7 @@ class Dashboard extends React.Component {
                                 </div>
                             </Card>
                         </div>
-                    </Col>
+                    </Col> */}
                 </Row>
             </div>
         )
