@@ -6,6 +6,7 @@
 
 .video-item {
     float: left;
+    min-width: 530px;
     margin: 10px 55px;
     box-shadow:2px 2px 5px #333333;
 }

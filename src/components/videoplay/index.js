@@ -4,7 +4,7 @@ import { Player, ControlBar, ReplayControl,
     ForwardControl, CurrentTimeDisplay,
     TimeDivider, PlaybackRateMenuButton, VolumeMenuButton } from 'video-react';
 
-import { Radio, Input, Button, Modal } from 'antd';
+import { Radio, Input, Button, Modal, Spin, message } from 'antd';
 
 import '../../../node_modules/video-react/dist/video-react.css'; // import css'
 import './index.css'; // import css'
@@ -28,8 +28,9 @@ class VideoPlay extends Component {
             modifyVideoName: '',
             heightWidthType: '1920x1080',
             fps: 60,
-            sizeType: 1,
+            sizeType: 75,
             outName: undefined,
+            editingVideo: '',
         }
     }
 
@@ -67,6 +68,7 @@ class VideoPlay extends Component {
         this.setState({
             showModify: true,
             modifyVideoName: videoName,
+            editingVideo: videoName,
         });
     }
     
@@ -86,15 +88,39 @@ class VideoPlay extends Component {
         if (modifyType === 1) {
             // 修改长宽比
             console.log('修改长宽比')
-            alterProportion(modifyVideoName, heightWidthType, outName).then(res => console.log(modifyVideoName, res));
+            alterProportion(modifyVideoName, heightWidthType, outName)
+            .then(res => {
+                if (res.data.err === 10001) {
+                    message.success('视频修改成功！');
+                    this.refreshView();
+                } else {
+                    message.error('视频修改失败！');
+                }
+            });
         } else if (modifyType === 2) {
             // 压缩视频
             console.log('压缩视频')
-            compressionVideo(modifyVideoName, sizeType, outName).then(res => console.log(modifyVideoName, res));
+            compressionVideo(modifyVideoName, sizeType, outName)
+            .then(res => {
+                if (res.data.err === 10001) {
+                    message.success('视频修改成功！');
+                    this.refreshView();
+                } else {
+                    message.error('视频修改失败！');
+                }
+            });
         } else {
             // 修改帧率
             console.log('修改帧率')
-            alterFPS(modifyVideoName, fps, outName).then(res => console.log(modifyVideoName, res));
+            alterFPS(modifyVideoName, fps, outName)
+            .then(res => {
+                if (res.data.err === 10001) {
+                    message.success('视频修改成功！');
+                    this.refreshView();
+                } else {
+                    message.error('视频修改失败！');
+                }
+            });
         }
         this.setState({
             modifyVideoName: '',
@@ -109,6 +135,7 @@ class VideoPlay extends Component {
         this.setState({
           deleteVideoName: '',
           visible: false,
+          editingVideo: '',
         });
     }
 
@@ -117,6 +144,7 @@ class VideoPlay extends Component {
         this.setState({
             modifyVideoName: '',
             showModify: false,
+            editingVideo: '',
         });
     }
 
@@ -136,6 +164,7 @@ class VideoPlay extends Component {
         getVideoList('sports').then(res => {
             this.setState({
                 videoList: res.data,
+                editingVideo: '',
             })
         })
     }
@@ -162,16 +191,18 @@ class VideoPlay extends Component {
     renderVideo(videoList) {
         const result = videoList.map((val, idx) =>
             <div className="video-item">
-                <Player
-                    fluid={false}
-                    height={300}
-                    playsInline
-                    src={`//127.0.0.1:7001/public/video/sports/${val}`}
-                />
-                <div className="button-container">
-                    <Button name={val} onClick={e => this.showModifyTable(e)} style={{'width': '100%'}}>修改该视频</Button>
-                    <Button type="danger" name={val} onClick={e => this.showModal(e)} style={{'width': '100%'}}>删除该视频</Button>
-                </div>
+                <Spin spinning={this.state.editingVideo === val}>
+                    <Player
+                        fluid={false}
+                        height={300}
+                        playsInline
+                        src={`//127.0.0.1:7001/public/video/sports/${val}`}
+                    />
+                    <div className="button-container">
+                        <Button name={val} onClick={e => this.showModifyTable(e)} style={{'width': '100%'}}>修改该视频</Button>
+                        <Button type="danger" name={val} onClick={e => this.showModal(e)} style={{'width': '100%'}}>删除该视频</Button>
+                    </div>
+                </Spin>
             </div>
         )
         return result;

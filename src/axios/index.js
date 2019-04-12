@@ -34,7 +34,7 @@ export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
 const newAxios = axios.create({
     // baseURL: '//47.94.86.217',
     baseURL: 'http://localhost:7001',
-    timeout: 1000,
+    timeout: 60 * 1000,
     // headers: {
     //     'Content-Type':'application/x-www-form-urlencoded',
     // },
