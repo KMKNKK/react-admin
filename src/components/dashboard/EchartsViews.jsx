@@ -7,7 +7,7 @@ class EchartsViews extends Component {
     draw(myChart) {
         let option = {
             title: {
-                text: '近七天访问人数'
+                text: '近七天访问系统人数'
             },
             tooltip : {
                 trigger: 'axis',
