@@ -2,15 +2,53 @@
  * Created by hao.cheng on 2017/4/16.
  */
 import React from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Modal,message, Form, Icon, Input, Button, Checkbox } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchData, receiveData } from '@/action';
 import { PwaInstaller } from '../widget';
+import { confirmAccount, addAccount } from '../../axios'
 
 const FormItem = Form.Item;
 
 class Login extends React.Component {
+
+    state = { visible: false }
+
+    signUp = () => {
+        this.setState({
+            visible: true,
+        });
+    }
+
+    handleOk = (e) => {
+        const signUpAccount = document.getElementById('signUpAccount').value;
+        const signUpPassWord = document.getElementById('signUpPassWord').value;
+        const inviteCode = document.getElementById('inviteCode').value;
+        if (!signUpAccount || !signUpPassWord) {
+            message.error('账号或密码为空！');
+        } else {
+            if (inviteCode === 'Invited') {
+                addAccount(signUpAccount, signUpPassWord, 'admin').then(res => {
+                    message.success('注册成功！');
+                });
+            } else {
+                addAccount(signUpAccount, signUpPassWord, 'guest').then(res => {
+                    message.success('注册成功！');
+                });
+            }
+            this.setState({
+                visible: false,
+            });
+        }
+    }
+
+    handleCancel = (e) => {
+        this.setState({
+            visible: false,
+        });
+    }
+
     componentWillMount() {
         const { receiveData } = this.props;
         receiveData(null, 'auth');
@@ -27,10 +65,15 @@ class Login extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                console.log(values.userName, values.password)
                 const { fetchData } = this.props;
-                if (values.userName === 'admin' && values.password === 'admin') fetchData({funcName: 'admin', stateName: 'auth'});
-                if (values.userName === 'guest' && values.password === 'guest') fetchData({funcName: 'guest', stateName: 'auth'});
+                confirmAccount(values.userName, values.password).then(res => {
+                    if (res.data.err === 10001) {
+                        fetchData({funcName: res.data.auth, stateName: 'auth'});
+                    } else {
+                        message.error('账号或密码错误！');
+                    }
+                })
             }
         });
     };
@@ -62,22 +105,33 @@ class Login extends React.Component {
                             )}
                         </FormItem>
                         <FormItem>
-                            {getFieldDecorator('remember', {
+                            {/* {getFieldDecorator('remember', {
                                 valuePropName: 'checked',
                                 initialValue: true,
                             })(
                                 <Checkbox>记住我</Checkbox>
                             )}
-                            <span className="login-form-forgot" href="" style={{float: 'right'}}>忘记密码</span>
+                            <span className="login-form-forgot" href="" style={{float: 'right'}}>忘记密码</span> */}
+                            <p style={{display: 'flex', justifyContent: 'space-between'}}>
+                                <span onClick={this.signUp} style={{width: '45%'}}><Icon type="plus" /> 注册账号</span>
+                                <span onClick={this.gitHub} style={{width: '45%'}}><Icon type="github" /> 第三方登录</span>
+                            </p>
                             <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
                                 登录
                             </Button>
-                            {/* <p style={{display: 'flex', justifyContent: 'space-between'}}>
-                                <span >或 现在就去注册!</span>
-                                <span onClick={this.gitHub} ><Icon type="github" />(第三方登录)</span>
-                            </p> */}
                         </FormItem>
                     </Form>
+
+                    <Modal
+                        title="注册"
+                        visible={this.state.visible}
+                        onOk={this.handleOk}
+                        onCancel={this.handleCancel}
+                    >
+                        <Input id="signUpAccount" placeholder="账户名" style={{'margin-bottom': '25px'}}/>
+                        <Input id="signUpPassWord" placeholder="密码" style={{'margin-bottom': '25px'}}/>
+                        <Input id="inviteCode" placeholder="邀请码(用于注册为管理员)" />
+                    </Modal>
                 </div>
             </div>
         );

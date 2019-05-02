@@ -7,7 +7,7 @@ class EchartsViews extends Component {
     draw(myChart) {
         let option = {
             title: {
-                text: '近七天访问系统人数'
+                text: '近七天视频访问次数'
             },
             tooltip : {
                 trigger: 'axis',
@@ -18,9 +18,9 @@ class EchartsViews extends Component {
                     }
                 }
             },
-            legend: {
-                data:['访问人数']
-            },
+            // legend: {
+            //     data:['访问人数']
+            // },
             toolbox: {
                 feature: {
                     saveAsImage: {}

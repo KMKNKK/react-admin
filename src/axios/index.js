@@ -54,3 +54,9 @@ export const alterProportion = (fileName, heightWidth, outName) => newAxios.post
 export const alterFPS = (fileName, fps, outName) => newAxios.post('/modifyVideo/alterFPS?fileType=video/sports&fileName=' + fileName + '&fps=' + fps + '&outName=' + outName)
 
 export const compressionVideo = (fileName, size, outName) => newAxios.post('/modifyVideo/compressionVideo?fileType=video/sports&fileName=' + fileName + '&size=' + size + '&outName=' + outName)
+
+// 验证账号
+export const confirmAccount = (account, password) => newAxios.post('user/confirmAccount?account=' + account + '&password=' + password)
+
+// 注册账号
+export const addAccount = (account, password, auth) => newAxios.post('user/addItem?account=' + account + '&password=' + password + '&auth=' + auth)

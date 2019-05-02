@@ -17,22 +17,6 @@ class Basic extends Component {
                             <Col span={24}>
                                 <Card bordered={false} bodyStyle={{minHeight: 600}}>
                                     {!auth.uid ? <h2 style={{height: 500}} className="center">你现在是访客身份</h2> : <h2 style={{height: 500}} className="center">你现在是管理员身份</h2>}
-                                    {/* {
-                                        auth.permissions && auth.permissions.includes('auth/authPage/visit') &&
-                                        <div style={{textAlign: 'center'}}>
-                                            <img src={beauty} alt="" style={{height: 400}} />
-                                            {(auth.permissions.includes('auth/authPage/edit') &&
-                                            <div>
-                                                <p>看啥子美女，看点美景就行啦~<span role="img" aria-label="" aria-labelledby="">😄😄</span></p>
-                                                <p>管理员身份登录才能看到这两段话</p>
-                                            </div>) ||
-                                            <div>
-                                                <p>管理员登录将看到不一样的效果</p>
-                                            </div>
-                                            }
-                                        </div>
-
-                                    } */}
                                 </Card>
                             </Col>
                         </Row>
