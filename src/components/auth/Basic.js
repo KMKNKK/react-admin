@@ -10,13 +10,13 @@ class Basic extends Component {
     render() {
         return (
             <div>
-                <BreadcrumbCustom first="权限管理" second="基础演示" />
+                <BreadcrumbCustom first="权限管理" second="用户权限管理" />
                 <AuthWidget
                     children={auth => (
                         <Row>
                             <Col span={24}>
                                 <Card bordered={false} bodyStyle={{minHeight: 600}}>
-                                    {!auth.uid ? <h2 style={{height: 500}} className="center">你现在是访客身份</h2> : <h2 style={{height: 500}} className="center">你现在是管理员身份</h2>}
+                                    {auth.role === '访客' ? <h2 style={{height: 500}} className="center">仅高级管理员可做权限管理</h2> : <h2 style={{height: 500}} className="center">你现在是管理员身份</h2>}
                                 </Card>
                             </Col>
                         </Row>
