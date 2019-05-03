@@ -60,3 +60,6 @@ export const confirmAccount = (account, password) => newAxios.post('user/confirm
 
 // 注册账号
 export const addAccount = (account, password, auth) => newAxios.post('user/addItem?account=' + account + '&password=' + password + '&auth=' + auth)
+
+// 搜索视频
+export const searchVideo = (name) => newAxios.get('getVideoList/searchVideo?name=' + name)

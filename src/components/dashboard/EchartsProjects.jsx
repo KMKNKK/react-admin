@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getVideoOccupancy } from '../../axios'
+import { message } from 'antd';
 const echarts = require('echarts');
 
 class EchartsProjects extends Component {
@@ -30,6 +31,9 @@ class EchartsProjects extends Component {
         }
         getVideoOccupancy().then(res => {
             option.series[0].data[0].value = res.data.msg;
+            if (res.data.msg > 100) {
+                message.warning('服务器容量超负荷！');
+            }
             myChart.setOption(option, true);
         })
     }

@@ -11,9 +11,10 @@ import './index.css'; // import css'
 
 import UploadVideo from '../forms/UploadVideo'
 
-import { getVideoList, deleteVideo, alterProportion, alterFPS, compressionVideo } from '../../axios'
+import { getVideoList, deleteVideo, alterProportion, alterFPS, compressionVideo, searchVideo } from '../../axios'
 
 const RadioGroup = Radio.Group;
+const Search = Input.Search;
 
 class VideoPlay extends Component {
 
@@ -163,6 +164,14 @@ class VideoPlay extends Component {
         });
     }
 
+    handleSearch = (value) => {
+        searchVideo(value).then(res => {
+            this.setState({
+                videoList: res.data.msg,
+            })
+        })
+    }
+
     refreshView = () => {
         getVideoList('sports').then(res => {
             this.setState({
@@ -286,6 +295,13 @@ class VideoPlay extends Component {
 
         return (
             <div>
+                <Search
+                    placeholder="可在此搜索视频"
+                    enterButton="Search"
+                    size="large"
+                    style={{'margin-top': '30px'}}
+                    onSearch={value => this.handleSearch(value)}
+                />
                 <div className="video-list-container">
                     {this.renderVideo(videoList)}
                 </div>
