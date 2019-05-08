@@ -70,6 +70,7 @@ class Login extends React.Component {
                 confirmAccount(values.userName, values.password).then(res => {
                     if (res.data.err === 10001) {
                         fetchData({funcName: res.data.auth, stateName: 'auth'});
+                        localStorage.setItem('accountName', values.userName);
                     } else {
                         message.error('账号或密码错误！');
                     }

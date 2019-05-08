@@ -63,3 +63,9 @@ export const addAccount = (account, password, auth) => newAxios.post('user/addIt
 
 // 搜索视频
 export const searchVideo = (name) => newAxios.get('getVideoList/searchVideo?name=' + name)
+
+// 获取用户列表
+export const getUserList = () => newAxios.get('user/getUserList')
+
+// 修改用户权限
+export const changeUserAuth = (name, doWhat) => newAxios.post('user/changeUserAuth?name=' + name + '&doWhat=' + doWhat) 

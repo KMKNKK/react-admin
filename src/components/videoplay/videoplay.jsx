@@ -295,6 +295,9 @@ class VideoPlay extends Component {
 
         return (
             <div>
+                <UploadVideo
+                    refreshView={this.refreshView}                
+                />
                 <Search
                     placeholder="可在此搜索视频"
                     enterButton="Search"
@@ -305,9 +308,6 @@ class VideoPlay extends Component {
                 <div className="video-list-container">
                     {this.renderVideo(videoList)}
                 </div>
-                <UploadVideo
-                    refreshView={this.refreshView}                
-                />
                 <Modal
                     title="请二次确认"  
                     visible={this.state.visible}

@@ -31,7 +31,6 @@ class UploadVideo extends Component {
                 <p className="ant-upload-drag-icon">
                     <Icon type="inbox" />
                 </p>
-                <p className="ant-upload-text">Click or drag file to this area to upload video</p>
                 <p className="ant-upload-hint">点击或将视频拖拽到此处来上传</p>
             </Dragger>
         )
