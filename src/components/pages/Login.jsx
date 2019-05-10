@@ -24,16 +24,17 @@ class Login extends React.Component {
     handleOk = (e) => {
         const signUpAccount = document.getElementById('signUpAccount').value;
         const signUpPassWord = document.getElementById('signUpPassWord').value;
+        const signUpPhoneNumber = document.getElementById('signUpPhoneNumber').value;
         const inviteCode = document.getElementById('inviteCode').value;
-        if (!signUpAccount || !signUpPassWord) {
-            message.error('账号或密码为空！');
+        if (!signUpAccount || !signUpPassWord || !signUpPhoneNumber) {
+            message.error('必填项为空！');
         } else {
             if (inviteCode === 'Invited') {
-                addAccount(signUpAccount, signUpPassWord, 'admin').then(res => {
+                addAccount(signUpAccount, signUpPassWord, signUpPhoneNumber, 'admin').then(res => {
                     message.success('注册成功！');
                 });
             } else {
-                addAccount(signUpAccount, signUpPassWord, 'guest').then(res => {
+                addAccount(signUpAccount, signUpPassWord, signUpPhoneNumber, 'guest').then(res => {
                     message.success('注册成功！');
                 });
             }
@@ -129,8 +130,9 @@ class Login extends React.Component {
                         onOk={this.handleOk}
                         onCancel={this.handleCancel}
                     >
-                        <Input id="signUpAccount" placeholder="账户名" style={{'margin-bottom': '25px'}}/>
-                        <Input id="signUpPassWord" placeholder="密码" style={{'margin-bottom': '25px'}}/>
+                        <Input id="signUpAccount" placeholder="账户名(必填)" style={{'margin-bottom': '25px'}}/>
+                        <Input id="signUpPassWord" placeholder="密码(必填)" style={{'margin-bottom': '25px'}}/>
+                        <Input id="signUpPhoneNumber" placeholder="手机号(必填)" style={{'margin-bottom': '25px'}}/>
                         <Input id="inviteCode" placeholder="邀请码(用于注册为管理员)" />
                     </Modal>
                 </div>

@@ -59,7 +59,7 @@ export const compressionVideo = (fileName, size, outName) => newAxios.post('/mod
 export const confirmAccount = (account, password) => newAxios.post('user/confirmAccount?account=' + account + '&password=' + password)
 
 // 注册账号
-export const addAccount = (account, password, auth) => newAxios.post('user/addItem?account=' + account + '&password=' + password + '&auth=' + auth)
+export const addAccount = (account, password, phoneNumber, auth) => newAxios.post('user/addItem?account=' + account + '&password=' + password + '&phoneNumber=' + phoneNumber + '&auth=' + auth)
 
 // 搜索视频
 export const searchVideo = (name) => newAxios.get('getVideoList/searchVideo?name=' + name)
@@ -69,3 +69,9 @@ export const getUserList = () => newAxios.get('user/getUserList')
 
 // 修改用户权限
 export const changeUserAuth = (name, doWhat) => newAxios.post('user/changeUserAuth?name=' + name + '&doWhat=' + doWhat) 
+
+// 删除用户账号
+export const deleteAccount = (account) => newAxios.post('user/deleteAccount?account=' + account) 
+
+// 修改用户密码
+export const changeUserPassword = (id, newPassword) => newAxios.post('user/changeUserPassword?id=' + id + '&newPassword=' + newPassword) 
