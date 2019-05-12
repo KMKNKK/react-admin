@@ -74,7 +74,7 @@ class EchartsViews extends Component {
     }
     render() {
         return (
-            <div id="PV" style={{ width: 377, height: 352 }}></div>
+            <div id="PV" style={{ width: 377, height: 352, left: '100px', top: '30px' }}></div>
         );
     }
 }

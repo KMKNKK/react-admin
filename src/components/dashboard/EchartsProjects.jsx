@@ -52,7 +52,7 @@ class EchartsProjects extends Component {
     }
     render() {
         return (
-            <div id="main" style={{ width: 377, height: 352 }}></div>
+            <div id="main" style={{ width: 377, height: 352, left: '100px', top: '30px' }}></div>
         );
     }
 }

@@ -22,23 +22,23 @@ class Dashboard extends React.Component {
             <AuthWidget
                 children={auth => auth.role === '访客' ? <h2 style={{height: 500}} className="center">您暂无权限查看数据报表</h2> : (
                     <div className="gutter-example button-demo">
-                        <BreadcrumbCustom />
-                        <Row gutter={10}>
-                            <Col className="gutter-row" md={8}>
+                        <BreadcrumbCustom first="数据报表" second="空间使用量 & 近七天用户访问数量"/>
+                        <Row gutter={20}>
+                            <Col className="gutter-row" md={12}>
                                 <div className="gutter-box">
                                     <Card bordered={false}>
                                         <EchartsProjects />
                                     </Card>
                                 </div>
                             </Col>
-                            <Col className="gutter-row" md={8}>
+                            <Col className="gutter-row" md={12}>
                                 <div className="gutter-box">
                                     <Card bordered={false}>
                                         <EchartsViews />
                                     </Card>
                                 </div>
                             </Col>
-                            <Col className="gutter-row" md={8}>
+                            {/* <Col className="gutter-row" md={8}>
                                 <div className="gutter-box">
                                     <Card bordered={false}>
                                         <div className="pb-m">
@@ -60,7 +60,7 @@ class Dashboard extends React.Component {
                                         </ul>
                                     </Card>
                                 </div>
-                            </Col>
+                            </Col> */}
                         </Row>
                     </div>
                 )}

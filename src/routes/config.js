@@ -1,22 +1,27 @@
 export default {
     menus: [ // 菜单相关路由
         {
-            key: '/app/videoPlay', title: '首页', icon: 'star', component: 'VideoPlay'
+            key: '/app/videoPlay', title: '视频管理', icon: 'star', component: 'VideoPlay'
         },
-        { key: '/app/dashboard/index', title: '数据报表', icon: 'mobile', component: 'Dashboard' },
-        // {
-        //     key: '/subs4', title: '页面', icon: 'switcher',
-        //     subs: [
-        //         { key: '/login', title: '登录' },
-        //         { key: '/404', title: '404' },
-        //     ],
-        // },
+        { 
+            key: '/app/dashboard/index', title: '数据报表', icon: 'area-chart', component: 'Dashboard' 
+        },
         {
-            key: '/app/auth', title: '权限管理', icon: 'safety',
-            subs: [
-                { key: '/app/auth/basic', title: '用户权限升级', component: 'AuthBasic' },
-                // { key: '/app/auth/routerEnter', title: '路由拦截', component: 'RouterEnter', auth: 'auth/testPage' },
-            ],
+            key: '/app/auth/basic', title: '用户访问记录', icon: 'ordered-list', component: 'AuthBasic'
+        },
+        {
+            key: '/app/auth/basic', title: '用户权限管理', icon: 'safety', component: 'AuthBasic'
+        },
+
+
+        {
+            key: '/app/auth/basic', title: '账号信息更改', icon: 'solution', component: 'AuthBasic'
+        },
+        {
+            key: '/app/auth/basic', title: '发送公告', icon: 'message', component: 'AuthBasic'
+        },
+        {
+            key: '/app/auth/basic', title: '查看用户反馈', icon: 'bell', component: 'AuthBasic'
         },
     ],
     others: [] // 非菜单相关路由

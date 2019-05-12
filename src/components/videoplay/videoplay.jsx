@@ -1,9 +1,7 @@
 // /* eslint-disable */
 import React, { Component } from 'react';
-import { Player, ControlBar, ReplayControl,
-    ForwardControl, CurrentTimeDisplay,
-    TimeDivider, PlaybackRateMenuButton, VolumeMenuButton } from 'video-react';
-
+import { Player } from 'video-react';
+import BreadcrumbCustom from '../BreadcrumbCustom';
 import { Radio, Input, Button, Modal, Spin, message, Table } from 'antd';
 
 import '../../../node_modules/video-react/dist/video-react.css'; // import css'
@@ -295,12 +293,13 @@ class VideoPlay extends Component {
 
         return (
             <div>
+                <BreadcrumbCustom first="视频管理"/>
                 <UploadVideo
                     refreshView={this.refreshView}                
                 />
                 <Search
                     placeholder="可在此搜索视频"
-                    enterButton="Search"
+                    enterButton="搜索"
                     size="large"
                     style={{'margin-top': '30px'}}
                     onSearch={value => this.handleSearch(value)}
