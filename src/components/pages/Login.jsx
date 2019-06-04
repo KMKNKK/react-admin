@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchData, receiveData } from '@/action';
 import { PwaInstaller } from '../widget';
-import { confirmAccount, addAccount } from '../../axios'
+import { confirmAccount, addAccount, postRecord } from '../../axios'
 
 const FormItem = Form.Item;
 
@@ -66,6 +66,8 @@ class Login extends React.Component {
                 const { fetchData } = this.props;
                 confirmAccount(values.userName, values.password).then(res => {
                     if (res.data.err === 10001) {
+                        // TODO
+                        postRecord(localStorage.getItem('ip'), window.navigator.appVersion.split('(')[1].split(')')[0])
                         fetchData({funcName: res.data.auth, stateName: 'auth'});
                         localStorage.setItem('accountName', values.userName);
                     } else {

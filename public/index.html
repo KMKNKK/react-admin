@@ -26,6 +26,10 @@
 <body>
 	<link rel="stylesheet/less" type="text/css" href="./theme.less" />
 	<script src="https://cdn.bootcss.com/less.js/2.7.2/less.min.js"></script>
+	<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+	<script type="text/javascript">
+		localStorage.setItem('ip', returnCitySN["cip"]+','+returnCitySN["cname"]);
+	</script>
 	<script>
 		const primaryColor = localStorage.getItem('@primary-color');
 		primaryColor && window.less.modifyVars({

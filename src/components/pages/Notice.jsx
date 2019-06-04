@@ -1,81 +1,73 @@
 import React from 'react';
 import { Input, Table, Button } from 'antd';
+import { getFeedbackList, postFeedback } from '../../axios'
 
 const { TextArea } = Input;
 
 class VisitList extends React.Component {
 
     componentWillMount() {
-        // getUserList().then(res => {
-        //     this.setState({
-        //         visitList: res.data.msg,
-        //     })
-        // })
+        getFeedbackList().then(res => {
+            this.setState({
+                announcementList: res.data.msg.announcement,
+            })
+        })
+    }
+
+    handleSubmit() {
+        const value = document.getElementById('textArea').value;
+        postFeedback(value).then(res => {
+            getFeedbackList().then(res => {
+                this.setState({
+                    announcementList: res.data.msg.announcement,
+                })
+            })
+        })
     }
 
     state = {
-        visitList: [
-            {
-                created_at: '2019/5/21',
-                phone: '123',
-                msg: '112233',
-            },
-            {
-                created_at: '2019/2/23',
-                phone: '456',
-                msg: '好',
-            },
-            {
-                created_at: '2019/3/18',
-                phone: '789',
-                msg: '还不错',
-            },
-        ],
+        announcementList: [],
     }
 
     render() {
 
-        const { visitList } = this.state;
+        const { announcementList } = this.state;
 
         const columns = [{
             title: 'id',
             dataIndex: 'id',
             key: 'id',
         }, {
-            title: '反馈时间',
+            title: '发送时间',
             dataIndex: 'created_at',
             key: 'created_at',
         }, {
-            title: '联系号码',
-            dataIndex: 'phone',
-            key: 'phone',
-        }, {
-            title: '反馈内容',
+            title: '发送内容',
             dataIndex: 'msg',
             key: 'msg',
         }]
 
         let data = [];
 
-        visitList.forEach((val, idx) => {
+        announcementList.forEach((val, idx) => {
             data.push({
-                id: idx,
+                id: idx + 1,
                 created_at: val.created_at.slice(0, 10),
-                phone: val.phone,
-                msg: val.msg,
+                msg: val.words,
             })
         })
 
         return (
             <div>
                 <Table 
-                    title={() => '历史反馈记录表'}
+                    title={() => '历史公告记录表'}
                     dataSource={data} 
                     columns={columns} 
                     bordered
                     style={{'marginTop': '20px'}}
                 />
-                <TextArea 
+                <TextArea
+                    id="textArea"
                     rows={4}
                     placeholder="输入新公告"
                 />

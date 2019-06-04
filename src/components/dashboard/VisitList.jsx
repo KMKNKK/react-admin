@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, Table } from 'antd';
+import { postRecord, getRecordList } from '../../axios'
 import './VisitList.css'
 
 const Search = Input.Search;
@@ -7,31 +8,15 @@ const Search = Input.Search;
 class VisitList extends React.Component {
 
     componentWillMount() {
-        // getUserList().then(res => {
-        //     this.setState({
-        //         visitList: res.data.msg,
-        //     })
-        // })
+        getRecordList().then(res => {
+            this.setState({
+                visitList: res.data.msg.list,
+            })
+        })
     }
 
     state = {
-        visitList: [
-            {
-                visited_at: '2019/5/21',
-                device: 'iphone 8P',
-                ip: '192.0.0.1',
-            },
-            {
-                visited_at: '2019/2/23',
-                device: 'Android',
-                ip: '210.80.81.1',
-            },
-            {
-                visited_at: '2019/3/18',
-                device: 'windows',
-                ip: '202.36.47.1',
-            },
-        ],
+        visitList: [],
     }
 
     render() {
@@ -47,7 +32,7 @@ class VisitList extends React.Component {
             dataIndex: 'visited_at',
             key: 'visited_at',
         }, {
-            title: '设备信息',
+            title: '系统信息',
             dataIndex: 'device',
             key: 'device',
         }, {
@@ -61,8 +46,8 @@ class VisitList extends React.Component {
         visitList.forEach((val, idx) => {
             data.push({
                 id: idx,
-                visited_at: val.visited_at.slice(0, 10),
-                device: val.device,
+                visited_at: val.created_at.slice(0, 10),
+                device: val.broswer,
                 ip: val.ip,
             })
         })

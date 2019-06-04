@@ -72,3 +72,18 @@ export const deleteAccount = (account) => newAxios.post('user/deleteAccount?acco
 
 // 修改用户密码
 export const changeUserPassword = (id, newPassword) => newAxios.post('user/changeUserPassword?id=' + id + '&newPassword=' + newPassword) 
+
+// 修改用户手机号
+export const changeUserPhone = (id, newPhone) => newAxios.post('user/changeUserPhone?id=' + id + '&newPhone=' + newPhone) 
+
+// 获得反馈/公告
+export const getFeedbackList = () => newAxios.get('feedback/getList') 
+
+// 发布公告
+export const postFeedback = (words) => newAxios.post('feedback/addItem?type=' + 'announcement' + '&words=' + words) 
+
+// 记录用户痕迹
+export const postRecord = (ip, broswer) => newAxios.post('record/addItem?ip=' + ip + '&broswer=' + broswer) 
+
+// 获取用户痕迹
+export const getRecordList = () => newAxios.get('record/getRecordList') 
