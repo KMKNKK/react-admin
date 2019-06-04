@@ -27,6 +27,10 @@ import RouterEnter from './auth/RouterEnter';
 import VideoPlay from './videoplay'
 import MapUi from './ui/map';
 import QueryParams from './extension/QueryParams';
+import VisitList from './dashboard/VisitList';
+import ChangeInfo from './forms/ChangeInfo';
+import Notice from './pages/Notice';
+import FeedBack from './pages/FeedBack';
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -38,5 +42,5 @@ export default {
     Echarts, Recharts, Icons, Buttons, Spins, Modals, Notifications,
     Tabs, Banners, Drags, Dashboard, Gallery, BasicAnimations,
     ExampleAnimations, AuthBasic, RouterEnter, WysiwygBundle,
-    VideoPlay, MapUi, QueryParams
+    VideoPlay, MapUi, QueryParams, VisitList, ChangeInfo, Notice, FeedBack
 }
